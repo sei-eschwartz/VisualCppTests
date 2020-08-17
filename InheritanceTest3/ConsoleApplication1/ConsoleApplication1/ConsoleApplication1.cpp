@@ -3,6 +3,7 @@
 // https://stackoverflow.com/questions/15921372/c-virtual-table-layout-of-mimultiple-inheritance
 
 #include <iostream>
+using namespace std;
 
 struct TestData {
 	char* Name;
@@ -49,10 +50,15 @@ protected:
 };
 
 int main() {
+	cout << "Main";
 	Derived* x = new Derived();
 	x->mumble();
 	x->speakClearly();
 	int num = x->doSomething();
+	Derived* y = new Derived();
+	y->mumble();
+	y->~Derived();
+	delete y;
 	delete x;
 }
 
@@ -69,6 +75,7 @@ int main() {
 
 Derived::Derived() : Base1(), Base2()
 {
+	cout << "Derived Constructor";
 	this->data_Base1 = 10;
 	this->data_Base1_2 = 2.345;
 }
@@ -80,6 +87,7 @@ Derived* Derived::clone() const
 
 int Derived::doSomething()
 {
+	cout << "Derived doSomething";
 	data_Base1_3.number = 10;
 	data_Base1_3.longNumber = 123456789101112;
 	data_Base1_3.fl = myFloatFunction(data_Base1_3.longNumber);
@@ -89,6 +97,7 @@ int Derived::doSomething()
 
 Base1::Base1()
 {
+	cout << "Base 1 Constructor";
 	this->data_Base1 = 0;
 	this->data_Base1_2 = 0;
 	this->data_Base1_3.fl = 0;
@@ -99,6 +108,7 @@ Base1::Base1()
 
 Base1::~Base1()
 {
+	cout << "Base 1 Destructor";
 	this->data_Base1 = 0;
 	this->data_Base1_2 = 0;
 	this->data_Base1_3.fl = 0;
