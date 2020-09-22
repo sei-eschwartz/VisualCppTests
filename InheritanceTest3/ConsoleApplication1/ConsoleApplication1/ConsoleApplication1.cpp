@@ -19,7 +19,6 @@ public:
 	virtual ~Base1();
 	virtual void speakClearly();
 	virtual float myFloatFunction(long input);
-	virtual Base1* clone() const;
 
 protected:
 	float data_Base1;
@@ -32,7 +31,6 @@ public:
 	Base2();
 	virtual ~Base2();
 	virtual void mumble();
-	virtual Base2* clone() const;
 
 protected:
 	float data_Base2;
@@ -42,7 +40,6 @@ class Derived : public Base1, public Base2 {
 public:
 	Derived();
 	virtual ~Derived() = default;
-	virtual Derived* clone() const;
 	int doSomething();
 
 protected:
@@ -78,11 +75,6 @@ Derived::Derived() : Base1(), Base2()
 	cout << "Derived Constructor";
 	this->data_Base1 = 10;
 	this->data_Base1_2 = 2.345;
-}
-
-Derived* Derived::clone() const
-{
-	return nullptr;
 }
 
 int Derived::doSomething()
@@ -123,11 +115,6 @@ float Base1::myFloatFunction(long input)
 	return 0.0f;
 }
 
-Base1* Base1::clone() const
-{
-	return nullptr;
-}
-
 Base2::Base2()
 {
 	this->data_Base2 = 3.456;
@@ -142,7 +129,3 @@ void Base2::mumble()
 {
 }
 
-Base2* Base2::clone() const
-{
-	return nullptr;
-}
