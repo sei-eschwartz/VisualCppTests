@@ -108,6 +108,7 @@ Base1::~Base1()
 
 void Base1::speakClearly()
 {
+	cout << "speak clearly";
 }
 
 float Base1::myFloatFunction(long input)
@@ -127,5 +128,6 @@ Base2::~Base2()
 
 void Base2::mumble()
 {
+	cout << "mumble";
 }
 
